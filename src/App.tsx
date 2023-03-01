@@ -1,5 +1,5 @@
 import React from 'react'
-import useDeezerSearch from './assets/custom/useDeezerSearch'
+import useDeezerSearch from './custom/useDeezerSearch'
 import './App.css'
 
 function App() {
