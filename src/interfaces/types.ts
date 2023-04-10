@@ -2,6 +2,7 @@ export interface Track {
     id: number
     title: string
     preview: string
+    duration: number
     artist: {
         id: number
         name: string
