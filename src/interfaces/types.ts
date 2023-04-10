@@ -28,3 +28,7 @@ export interface SearchResponse {
         }
     }[]
 }
+
+export interface ChildProps {
+    onValueChange: (newValue: string) => void
+}
