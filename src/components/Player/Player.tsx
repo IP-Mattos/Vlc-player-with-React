@@ -1,11 +1,11 @@
-// AudioPlayer.tsx
-
 import React, { useEffect, useRef, useState } from 'react'
 import AudioControls from '../AudioControls/AudioControls'
 
 interface AudioPlayerProps {
     src: string
     img: string
+    title: string
+    artist: string
 }
 
 const AudioPlayer: React.FC<AudioPlayerProps> = (props) => {
@@ -78,9 +78,13 @@ const AudioPlayer: React.FC<AudioPlayerProps> = (props) => {
     }
 
     return (
-        <div className="player">
-            {props.src && <p>Now playing: {props.src}</p>}
+        <div>
             <img src={props.img} alt="band" />
+            {props.src && (
+                <p>
+                    Now playing: {props.artist} - {props.title}
+                </p>
+            )}
             <AudioControls
                 volume={volume}
                 isPlaying={isPlaying}
