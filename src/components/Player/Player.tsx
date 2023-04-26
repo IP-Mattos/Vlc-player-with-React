@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import AudioControls from '../AudioControls/AudioControls'
+import { Control } from '../styles'
 
 interface AudioPlayerProps {
     src: string
@@ -27,7 +28,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = (props) => {
                 audio.pause()
             }
         }
-    }, [props.src, isPlaying, volume])
+    }, [props.src, isPlaying])
 
     useEffect(() => {
         const audio = audioRef.current
@@ -78,13 +79,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = (props) => {
     }
 
     return (
-        <div>
-            <img src={props.img} alt="band" />
-            {props.src && (
-                <p>
-                    Now playing: {props.artist} - {props.title}
-                </p>
-            )}
+        <Control>
             <AudioControls
                 volume={volume}
                 isPlaying={isPlaying}
@@ -95,7 +90,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = (props) => {
                 onProgressChange={handleProgressChange}
             />
             <audio ref={audioRef} autoPlay />
-        </div>
+        </Control>
     )
 }
 

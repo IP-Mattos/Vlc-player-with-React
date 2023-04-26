@@ -1,5 +1,7 @@
 import React from 'react'
 import formatTime from '../../utils/format'
+import { Volumen, BoxVolume, Percent } from '../styles'
+
 interface AudioControlsProps {
     currentTime: number
     duration: number
@@ -23,18 +25,12 @@ const AudioControls: React.FC<AudioControlsProps> = (props) => {
 
     return (
         <div>
-            <input
-                type="range"
-                min={0}
-                max={1}
-                step={0.1}
-                value={volume}
-                onChange={onVolumeChange}
-            />
+            <span>{formatTime(Math.floor(currentTime))}</span>
             <button onClick={onPlayPause}>
                 {isPlaying ? 'Pause' : 'Play'}
             </button>
             <input
+                className="progress"
                 type="range"
                 min={0}
                 max={duration}
@@ -42,10 +38,20 @@ const AudioControls: React.FC<AudioControlsProps> = (props) => {
                 value={currentTime}
                 onChange={onProgressChange}
             />
-            <span>
-                {formatTime(Math.floor(currentTime))} /{' '}
-                {formatTime(Math.floor(duration))}
-            </span>
+            <Percent>{volume * 100} %</Percent>
+            <BoxVolume>
+                <Volumen volume={volume}>
+                    <input
+                        type="range"
+                        min={0}
+                        max={1}
+                        step={0.1}
+                        value={volume}
+                        onChange={onVolumeChange}
+                    />
+                </Volumen>
+            </BoxVolume>
+            <span>{formatTime(Math.floor(duration))}</span>
         </div>
     )
 }

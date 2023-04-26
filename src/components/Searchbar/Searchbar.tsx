@@ -11,15 +11,13 @@ function ChildComponent({ onValueChange }: ChildProps) {
     }
 
     return (
-        <div>
-            <input
-                type="text"
-                name=""
-                placeholder="Search..."
-                value={query}
-                onChange={handleInputChange}
-            />
-        </div>
+        <input
+            type="text"
+            name=""
+            placeholder="Search..."
+            value={query}
+            onChange={handleInputChange}
+        />
     )
 }
 
