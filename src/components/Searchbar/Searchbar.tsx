@@ -3,7 +3,7 @@ import { ChildProps } from '../../interfaces/types'
 import { Searchbar } from '../styles'
 
 function ChildComponent({ onValueChange }: ChildProps) {
-    const [query, setQuery] = useState('asddasd')
+    const [query, setQuery] = useState('Korn')
 
     function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
         const query = e.target.value
