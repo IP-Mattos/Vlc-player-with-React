@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ChildProps } from '../../interfaces/types'
+import { Searchbar } from '../styles'
 
 function ChildComponent({ onValueChange }: ChildProps) {
     const [query, setQuery] = useState('Korn')
@@ -11,13 +12,16 @@ function ChildComponent({ onValueChange }: ChildProps) {
     }
 
     return (
-        <input
-            type="text"
-            name=""
-            placeholder="Search..."
-            value={query}
-            onChange={handleInputChange}
-        />
+        <Searchbar>
+            <input
+                type="text"
+                name=""
+                placeholder="Search..."
+                value={query}
+                onChange={handleInputChange}
+            />
+            🔍︎
+        </Searchbar>
     )
 }
 

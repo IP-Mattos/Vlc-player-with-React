@@ -6,36 +6,51 @@ interface VolumenProps {
 export const Container = styled.div`
     width: 80%;
     min-width: 400px;
-    margin: 10vh auto;
-    height: 80vh;
+    margin: 5vh auto;
     & > hr {
         border: 2px solid #d1d1d1;
     }
     & img {
         width: 40%;
     }
+    @media (max-width: 1042px) {
+        width: 100%;
+        & img {
+            width: 80%;
+        }
+    }
 `
 
 export const Control = styled.div`
-    background-color: #222;
+    background-color: #f0f0f0;
+    color: #000;
+`
+export const Bar = styled.div`
+    width: 100%;
+    height: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    & > div {
-        height: 100%;
-        width: 70%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        & > .progress {
-            width: 70%;
-        }
+    & .progress {
+        width: 85%;
+        background-color: #cacaca;
+    }
+    & > input[type='range'] {
+        overflow: hidden;
+        height: 10px;
+        appearance: none;
+        border-radius: 5px;
+        -webkit-appearance: none;
+        background-color: #cccccc;
     }
 
-    & > p {
-        text-align: center;
-        width: 25%;
+    & > input[type='range']::-webkit-slider-thumb {
+        width: 10px;
+        -webkit-appearance: none;
+        height: 10px;
+        border-radius: 50%;
+        background: #dedede;
+        box-shadow: -4000px 0 0 4000px #43e5f7;
     }
 `
 export const Volumen = styled.div<VolumenProps>`
@@ -62,61 +77,66 @@ export const Volumen = styled.div<VolumenProps>`
         rgba(255, 142, 13, 1) 100%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#64646b",endColorstr="#ff8e0d",GradientType=1);
-    display: flex;
-    align-items: end;
-    height: 60px;
-    width: ${(props) => props.volume * 100}%;
-
+    width: ${(props) => props.volume * 90}%;
     & > input {
         -webkit-appearance: none;
         appearance: none;
         background-color: transparent;
         height: 60px;
+        overflow: hidden;
     }
 
     & > input::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        height: 60px;
         width: 0px;
         background: black;
     }
 `
 export const Percent = styled.p`
-    color: #fff;
     width: 50px;
     font-size: 0.8em;
-    position: fixed;
-    margin: 90vh;
+    text-align: center;
 `
 export const BoxVolume = styled.div`
-    background-color: white;
-    height: 40px;
-    clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
-    overflow: hidden;
-    width: 12%;
+    clip-path: polygon(90% 0%, 0% 50%, 90% 50%);
+    background-color: #8a8a8a;
+    margin-bottom: -45px;
 `
-
+export const Border = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
 export const Content = styled.div`
     background-color: #000;
     height: 80vh;
+    width: 100%;
     position: relative;
-    overflow: hidden;
+
     & ${Control} {
-        width: 100%;
-        height: 10%;
         position: absolute;
+        width: 100%;
+        left: 0;
         bottom: 0;
     }
+    & .input-text {
+        background-color: #cacaca;
+        width: 31.2%;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
 `
+
 export const Menu = styled.div`
-    background-color: #fff;
+    background-color: #f3f3f3;
     display: flex;
     align-items: center;
     height: 30px;
     color: #000;
     overflow: hidden;
-
     & > p {
         padding: 0px 20px;
         font-size: 0.9rem;
@@ -125,6 +145,11 @@ export const Menu = styled.div`
     & > p:hover {
         cursor: pointer;
         background-color: #e7e7e750;
+    }
+    @media (max-width: 1042px) {
+        & p {
+            font-size: 0.8rem;
+        }
     }
 `
 
@@ -143,7 +168,12 @@ export const SecondMenu = styled.div`
 
     & > p:hover {
         cursor: pointer;
-        background-color: #e7e7e750;
+        background-color: #f5f5f5;
+    }
+    @media (max-width: 1042px) {
+        & > p {
+            display: none;
+        }
     }
 `
 
@@ -151,11 +181,9 @@ export const Tittle = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    height: 100%;
     font-size: 0.8rem;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    background-color: #cacaca;
     & img {
         padding: 4px;
         width: 25px;
@@ -168,8 +196,8 @@ export const CloseMenu = styled.div`
     align-self: flex-start;
     align-items: center;
     height: 100%;
-    background-color: #cacaca;
     margin-left: auto;
+    cursor: default;
     justify-content: space-between;
 
     & p {
@@ -184,19 +212,79 @@ export const CloseMenu = styled.div`
         color: #fff;
         transition: all 300ms;
     }
+    @media (max-width: 1042px) {
+        width: 30%;
+    }
 `
 export const Box = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70vh;
+    height: calc(100% - 100px);
 `
 export const Right = styled.div`
-    width: 40%;
+    background-color: #cacaca;
+    color: #000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    & p {
+        padding-bottom: 10px;
+        cursor: pointer;
+    }
+    @media (max-width: 1042px) {
+        & p {
+            font-size: 0.8rem;
+        }
+    }
 `
 
 export const Left = styled.div`
     width: 90%;
     display: flex;
     justify-content: center;
+`
+export const Buttons = styled.div`
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%; /* agregar altura al contenedor */
+    overflow: hidden;
+    & .panel {
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+    }
+    & button {
+        height: 40px;
+        width: 40px;
+        margin: -10px 0px;
+        font-size: 1.8rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    @media (max-width: 1042px) {
+        & .panel > button {
+            display: none;
+        }
+        & .panel > button:first-child {
+            display: flex;
+        }
+        & .panel {
+            width: 10%;
+        }
+    }
+`
+export const Searchbar = styled.div`
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
 `

@@ -22,7 +22,7 @@ function App() {
         setQuery(query)
     }
     function handleArtistChange(artist: string) {
-        setArtist(artist)
+        setArtist(artist + ' -')
     }
     return (
         <div className="App">
@@ -33,7 +33,7 @@ function App() {
                             src="https://upload.wikimedia.org/wikipedia/commons/e/e6/VLC_Icon.svg"
                             alt="icono vlc"
                         />
-                        <p>{artist} - Reproductor multimedia VLC</p>
+                        <p>{artist} Reproductor multimedia VLC</p>
                     </Tittle>
                     <CloseMenu>
                         <p>−</p>
@@ -42,6 +42,7 @@ function App() {
                     </CloseMenu>
                 </Menu>
                 <SecondMenu>
+                    <Searchbar onValueChange={handleChildValue} />
                     <p>
                         <u>M</u>edio
                     </p>
@@ -68,7 +69,6 @@ function App() {
                     </p>
                 </SecondMenu>
                 <Content>
-                    <Searchbar onValueChange={handleChildValue} />
                     <Playlist
                         tracks={tracks}
                         onArtistChange={handleArtistChange}

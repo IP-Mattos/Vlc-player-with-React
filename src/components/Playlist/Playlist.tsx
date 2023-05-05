@@ -32,7 +32,7 @@ function Playlist(props: PlaylistProps) {
     }
 
     return (
-        <div>
+        <>
             <Box>
                 <Right>
                     {props.tracks.map((track) => (
@@ -48,9 +48,8 @@ function Playlist(props: PlaylistProps) {
                     <img src={img} alt="band" />
                 </Left>
             </Box>
-
             <Player src={song} img={img} title={title} artist={artist} />
-        </div>
+        </>
     )
 }
 
