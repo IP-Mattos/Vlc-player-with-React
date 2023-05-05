@@ -47,7 +47,7 @@ const AudioControls: React.FC<AudioControlsProps> = (props) => {
             <Buttons>
                 <div className="panel">
                     <button onClick={onPlayPause}>
-                        {isPlaying ? '❙❙' : '▶'}
+                        {isPlaying && duration > 0 ? '❙❙' : '▶'}
                     </button>
                     <button disabled>⇤</button>
                     <button disabled>∎</button>

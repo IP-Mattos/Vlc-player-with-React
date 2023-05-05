@@ -12,7 +12,7 @@ interface AudioPlayerProps {
 const AudioPlayer: React.FC<AudioPlayerProps> = (props) => {
     const audioRef = useRef<HTMLAudioElement | null>(null)
     const [volume, setVolume] = useState<number>(0.1)
-    const [isPlaying, setPlaying] = useState<boolean>(false)
+    const [isPlaying, setPlaying] = useState<boolean>(true)
     const [currentTime, setCurrentTime] = useState<number>(0)
     const [duration, setDuration] = useState<number>(0)
 
@@ -36,6 +36,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = (props) => {
         if (audio) {
             audio.addEventListener('timeupdate', handleTimeUpdate)
             audio.addEventListener('loadedmetadata', handleLoadedMetadata)
+            setPlaying(true)
             return () => {
                 audio.removeEventListener('timeupdate', handleTimeUpdate)
                 audio.removeEventListener(
@@ -44,7 +45,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = (props) => {
                 )
             }
         }
-    }, [])
+    }, [props.src])
 
     const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const volumeValue = parseFloat(e.target.value)

@@ -35,14 +35,18 @@ function Playlist(props: PlaylistProps) {
         <>
             <Box>
                 <Right>
-                    {props.tracks.map((track) => (
-                        <div key={track.id} onClick={() => play(track)}>
-                            <p>
-                                {track.artist.name} - {track.title} :{' '}
-                                {convert(track.duration)}
-                            </p>
-                        </div>
-                    ))}
+                    {props.tracks.length > 0 ? (
+                        props.tracks.map((track) => (
+                            <div key={track.id} onClick={() => play(track)}>
+                                <p>
+                                    {track.artist.name} - {track.title} :{' '}
+                                    {convert(track.duration)}
+                                </p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>Esa canion o Artista no existe.</p>
+                    )}
                 </Right>
                 <Left>
                     <img src={img} alt="band" />

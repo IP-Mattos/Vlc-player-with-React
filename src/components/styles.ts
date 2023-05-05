@@ -246,7 +246,6 @@ export const Right = styled.div`
     display: flex;
     padding: 20px;
     flex-direction: column;
-    justify-content: space-between;
     overflow-y: auto;
     & p {
         padding-bottom: 10px;

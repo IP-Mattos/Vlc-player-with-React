@@ -13,7 +13,7 @@ import {
 } from './components/styles'
 
 function App() {
-    const [query, setQuery] = useState('korn')
+    const [query, setQuery] = useState('asddasd')
     const [artist, setArtist] = useState('')
     const debouncedValue = useDebounced(query, 300)
     const tracks = useDeezerSearch(debouncedValue)
