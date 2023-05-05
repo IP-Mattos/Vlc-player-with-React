@@ -52,6 +52,15 @@ export const Bar = styled.div`
         background: #dedede;
         box-shadow: -4000px 0 0 4000px #43e5f7;
     }
+    & > input[type='range']::-moz-range-thumb {
+        width: 10px;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 10px;
+        border-radius: 50%;
+        background: #dedede;
+        box-shadow: -4000px 0 0 4000px #43e5f7;
+    }
 `
 export const Volumen = styled.div<VolumenProps>`
     background: rgb(100, 100, 107);
@@ -87,6 +96,13 @@ export const Volumen = styled.div<VolumenProps>`
     }
 
     & > input::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 0px;
+        background: black;
+    }
+
+    input[type='range']::-moz-range-thumb {
         -webkit-appearance: none;
         appearance: none;
         width: 0px;
